@@ -82,34 +82,34 @@
 
   <%# matching_characters = Character.where({ :actor_id => a_id }) %>
 
-  <% @the_actor.characters.each do |a_character| %>
+  <%# @the_actor.characters.each do |a_character| %>
     <%# m_id = a_character.movie_id %>
 
     <%# matching_movies = Movie.where({ :id => m_id }) %>
 
-    <% the_movie = a_character.movie.at(0) %>
+    <%# the_movie = a_character.movie.at(0) %>
 
     <tr>
       <td>
-        <%= the_movie.title %>
+        <%= @the_actor.movies.at(0).title %>
       </td>
 
       <td>
-        <%= the_movie.year %>
+        <%#= the_movie.year %>
       </td>
 
       <td>
         <%# d_id = the_movie.director_id %>
         
         <%# matching_directors = Director.where({ :id => d_id }) %>
-        
+        <% the_movie = @the_actor.movies.at(0) %>
         <% the_director = the_movie.director %>
 
         <%= the_director.name %>
       </td>
 
       <td>
-        <%= a_character.name %>
+        <%= @the_actor.characters.at(0).name %>
       </td>
 
       <td>
@@ -118,5 +118,5 @@
         </a>
       </td>
     </tr>
-  <% end %>
+  <%# end %>
 </table>

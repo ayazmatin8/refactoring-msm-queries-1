@@ -18,4 +18,16 @@ class Actor < ApplicationRecord
 
     return matching_records
   end
+
+  def movies
+    my_id = self.id
+
+    matching_records = Character.where({ :actor_id => my_id })
+
+    movie_records = matching_records.map_relation_to_array(:movie_id)
+
+    list_of_movies = Movie.where({ :id => movie_records})
+    
+    return list_of_movies
+  end
 end
